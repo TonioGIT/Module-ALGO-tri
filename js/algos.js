@@ -1,3 +1,7 @@
+// Converts from degrees to radians.
+Math.toRadians = function(degrees) {
+  return degrees * Math.PI / 180;
+};
 
 
 function distanceFromGrenoble(city)
@@ -9,7 +13,7 @@ function distanceFromGrenoble(city)
   return 1;
 }
 
-function swap(i,j)
+function swap(i,j) // Swap the values in array csvData
 {
   displayBuffer.push(['swap', i, j]); // Do not delete this line (for display)
   console.log("implement me !");
