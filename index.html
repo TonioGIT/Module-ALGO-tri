@@ -42,6 +42,10 @@
           <div class='text-center'>
             <button class='btn btn-lg btn-primary' id='start-btn'>Trier</button>
           </div>
+          <br>
+          <div class='text-center'>
+            <button class='btn btn-lg btn-primary' id='test'>Test quicksort</button>
+          </div>
         </div>
         <div class='col-xs-9' id='canvas-div'>
           <div width="800px" id="main-canvas">
@@ -52,6 +56,14 @@
     </div>
 
     <script>
+
+      $('#test').click(function() {
+        let unsorted = [23, 45, 16, 244, 1, 37, 3, 99, 22];
+        let sorted = quicksort(unsorted);
+
+        console.log('Unsorted array', unsorted);
+        console.log('Sorted array', sorted);
+      })
 
 
       var csvData = null;
@@ -65,12 +77,12 @@
         d3.dsv(";", $('#data-set').val(), function(d) {
           return {
             num_dpt: +d.num_dpt, // convert "Year" column to Date
+            dist: distanceFromGrenoble(d),
             latitude: +d.latitude,
             longitude: +d.longitude,
             nom_ddpt: d.nom_ddpt,
             nom_commune: d.nom_commune,
             codes_postaux: d.codes_postaux,
-            dist: distanceFromGrenoble(d),
             str: d.nom_commune + " ("+d.num_dpt+") " + Math.floor(distanceFromGrenoble(d)) + "km"
           };
           }).then(function(data) {
